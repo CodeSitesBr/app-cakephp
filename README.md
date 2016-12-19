@@ -1,8 +1,6 @@
 # CakePHP aplicação de esqueleto com BootStrap
 
-[![License][badge license]][license]
-[![Latest Stable Version][badge version]][releases]
-[![Total Downloads][badge downloads]][downloads]
+[![License](https://poser.pugx.org/cakephp/app/license.svg)](https://packagist.org/packages/codesites/app-cakephp)
 
 Um esqueleto para criar aplicativos com [CakePHP](http://cakephp.org) 3.x.
 
