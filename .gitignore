@@ -1,5 +1,6 @@
 /vendor/*
 /composer.lock
+/config/app.php
 /tmp/*
 /logs/*
 /nbproject/private/
