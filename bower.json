@@ -1,0 +1,22 @@
+{
+  "name": "codesites/app-cakephp",
+  "description": "Um esqueleto para criar aplicativos com CakePHP 3.x. e Bootstrap",
+  "version": "1.0.0",
+  "homepage": "http://codesites.com.br",
+  "authors": [
+    "Marcelo Camargo <celaummm@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0"
+  },
+  "devDependencies": {}
+}
