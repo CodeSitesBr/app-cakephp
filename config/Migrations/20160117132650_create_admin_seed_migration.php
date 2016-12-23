@@ -1,7 +1,6 @@
 <?php
 
 use Phinx\Migration\AbstractMigration;
-use Cake\Auth\DefaultPasswordHasher;
 
 class CreateAdminSeedMigration extends AbstractMigration {
 
@@ -14,8 +13,7 @@ class CreateAdminSeedMigration extends AbstractMigration {
             'last_name' => 'Camargo',
             'email' => 'marcelo.vaz@fm.usp.br',
             'password' => function () {
-                $hasher = new DefaultPasswordHasher();
-                return $hasher->hash('123456');
+                return '123456';
             },
             'role' => 'admin',
             'active' => 1,

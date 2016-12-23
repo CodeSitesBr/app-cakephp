@@ -1,0 +1,2 @@
+<?= $this->Html->script('../bower_components/tinymce/tinymce.min', ['block' => 'script-bottom']); ?>
+<?= $this->Html->scriptBlock('tinymce.init({selector:".editor"});', ['block' => 'script-bottom']); ?>

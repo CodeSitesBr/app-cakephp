@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
@@ -12,8 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\HasMany $Bookmarks
  */
-class UsersTable extends Table
-{
+class UsersTable extends Table {
 
     /**
      * Initialize method
@@ -21,8 +21,7 @@ class UsersTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
-    {
+    public function initialize(array $config) {
         parent::initialize($config);
 
         $this->table('users');
@@ -36,59 +35,64 @@ class UsersTable extends Table
         ]);
     }
 
-    public function validationDefault(Validator $validator)
-    {
+    public function validationDefault(Validator $validator) {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->notEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'numeric'])
+                ->notEmpty('id', 'create');
 
         $validator
-            ->requirePresence('first_name', 'create')
-            ->notEmpty('first_name', 'Rellene este campo');
+                ->requirePresence('first_name', 'create')
+                ->notEmpty('first_name', 'Este campo não pode estar vazio');
 
         $validator
-            ->requirePresence('last_name', 'create')
-            ->notEmpty('last_name', 'Rellene este campo');
+                ->requirePresence('last_name', 'create')
+                ->notEmpty('last_name', 'Este campo não pode estar vazio');
 
         $validator
-            ->add('email', 'valid', ['rule' => 'email', 'message' => 'Ingrese un correo electrónico válido.'])
-            ->requirePresence('email', 'create')
-            ->notEmpty('email', 'Rellene este campo');
+                ->add('email', 'valid', ['rule' => 'email', 'message' => 'Por favor inserir um e-mail válido.'])
+                ->requirePresence('email', 'create')
+                ->notEmpty('email', 'Este campo não pode estar vazio');
 
         $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password', 'Rellene este campo', 'create');
+                ->requirePresence('password', 'create')
+                ->notEmpty('password', 'Este campo não pode estar vazio', 'create');
 
         return $validator;
     }
 
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->isUnique(['email'], 'Ya existe un usuario con este correo electrónico.'));
+    public function buildRules(RulesChecker $rules) {
+        $rules->add($rules->isUnique(['email'], 'Este e-mail já está sendo usado.'));
         return $rules;
     }
 
-    public function findAuth(\Cake\ORM\Query $query, array $options)
-    {
+    public function findAuth(\Cake\ORM\Query $query, array $options) {
         $query
-            ->select(['id', 'first_name', 'last_name', 'email', 'password', 'role'])
-            ->where(['Users.active' => 1]);
+                ->select(['id', 'first_name', 'last_name', 'email', 'password', 'role'])
+                ->where(['Users.active' => 1]);
 
         return $query;
     }
 
-    public function recoverPassword($id)
-    {
+    public function recoverPassword($id) {
         $user = $this->get($id);
         return $user->password;
     }
 
-    public function beforeDelete($event, $entity, $options)
-    {
-        if ($entity->role == 'admin')
-        {
+    /**
+     *
+     * Não deixar eliminar usuários do tipo admin
+     *
+     * @param type $event
+     * @param type $entity
+     * @param type $options
+     *
+     * @return boolean
+     */
+    public function beforeDelete($event, $entity, $options) {
+        if ($entity->role == 'admin') {
             return false;
         }
         return true;
     }
+
 }

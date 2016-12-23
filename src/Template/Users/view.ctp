@@ -1,36 +1,36 @@
 <div class="well">
-<h2><?= $user->first_name . ' ' . $user->last_name ?></h2>
+    <h2><?= $user->first_name . ' ' . $user->last_name ?></h2>
     <br>
     <dl>
-        <dt>Nombre</dt>
+        <dt>Nome</dt>
         <dd>
             <?= $user->first_name ?>
             &nbsp;
         </dd>
         <br>
 
-        <dt>Apellidos</dt>
+        <dt>Sobrenome</dt>
         <dd>
             <?= $user->last_name ?>
             &nbsp;
         </dd>
         <br>
 
-        <dt>Correo electrónico</dt>
+        <dt>E-mail</dt>
         <dd>
             <?= $user->email ?>
             &nbsp;
         </dd>
         <br>
 
-        <dt>Habilitado</dt>
+        <dt>Ativo</dt>
         <dd>
-            <?= $user->active ? 'SI' : 'NO' ?>
+            <?= $user->active ? 'SIM' : 'NÃO' ?>
             &nbsp;
         </dd>
         <br>
 
-        <dt>Creado</dt>
+        <dt>Criado</dt>
         <dd>
             <?= $user->created->nice() ?>
             &nbsp;

@@ -18,33 +18,43 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <html lang="pt-br">
     <head>
         <?= $this->Html->charset() ?>
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title>
             <?= $cakeDescription ?>:
             <?= $this->fetch('title') ?>
         </title>
+
         <?= $this->Html->meta('icon') ?>
+
+        <script>
+            path_url = '<?= $this->Url->image('..'); ?>';
+        </script>
 
         <?=
         $this->Html->css([
             '../bower_components/bootstrap/dist/css/bootstrap.min',
-            '../bower_components/font-awesome/css/font-awesome.min',
-            'codesites'
-        ])
+            '../bower_components/font-awesome/css/font-awesome.min'
+        ]);
         ?>
 
 
         <?=
         $this->Html->script([
             '../bower_components/jquery/dist/jquery.min',
-            '../bower_components/bootstrap/dist/js/bootstrap.min',
-            'codesites'
-        ])
+            '../bower_components/bootstrap/dist/js/bootstrap.min'
+        ]);
         ?>
 
         <?= $this->fetch('meta') ?>
         <?= $this->fetch('css') ?>
         <?= $this->fetch('script') ?>
+
+        <!-- CSS e JS customizado -->
+        <?= $this->Html->css('codesites'); ?>
+        <?= $this->Html->script('codesites'); ?>
+
     </head>
     <body>
 
@@ -56,5 +66,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
         <footer>
         </footer>
+
+        <?= $this->fetch('script-bottom'); ?>
     </body>
 </html>

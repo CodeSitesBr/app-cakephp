@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -19,8 +20,7 @@ use Cake\ORM\TableRegistry;
  * @property \Cake\I18n\Time $modified
  * @property \App\Model\Entity\Bookmark[] $bookmarks
  */
-class User extends Entity
-{
+class User extends Entity {
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -36,18 +36,18 @@ class User extends Entity
         'id' => false,
     ];
 
-    protected function _setPassword($value)
-    {
-        if (!empty($value))
-        {
+    protected function _setPassword($value) {
+        if (!empty($value)) {
+            // Criptografar a senha informada no formulário
             $hasher = new DefaultPasswordHasher();
             return $hasher->hash($value);
-        }
-        else
-        {
+        } else {
+            // No formulário edit, se não informar a senha
+            // recuperar a senha do usuário da base de dados
             $id_user = $this->_properties['id'];
             $user = TableRegistry::get('Users')->recoverPassword($id_user);
             return $user;
         }
     }
+
 }

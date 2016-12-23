@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Bookmark;
@@ -12,8 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
  */
-class BookmarksTable extends Table
-{
+class BookmarksTable extends Table {
 
     /**
      * Initialize method
@@ -21,8 +21,7 @@ class BookmarksTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
-    {
+    public function initialize(array $config) {
         parent::initialize($config);
 
         $this->table('bookmarks');
@@ -43,23 +42,22 @@ class BookmarksTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
-    {
+    public function validationDefault(Validator $validator) {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'numeric'])
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('title', 'create')
-            ->notEmpty('title');
+                ->requirePresence('title', 'create')
+                ->notEmpty('title', 'Este campo não pode estar vazio');
 
         $validator
-            ->requirePresence('description', 'create')
-            ->notEmpty('description');
+                ->requirePresence('description', 'create')
+                ->notEmpty('description', 'Este campo não pode estar vazio');
 
         $validator
-            ->requirePresence('url', 'create')
-            ->notEmpty('url');
+                ->requirePresence('url', 'create')
+                ->notEmpty('url', 'Este campo não pode estar vazio');
 
         return $validator;
     }
@@ -71,9 +69,9 @@ class BookmarksTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
-    {
+    public function buildRules(RulesChecker $rules) {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         return $rules;
     }
+
 }

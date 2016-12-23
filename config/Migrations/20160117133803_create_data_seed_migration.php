@@ -1,7 +1,6 @@
 <?php
 
 use Phinx\Migration\AbstractMigration;
-use Cake\Auth\DefaultPasswordHasher;
 
 class CreateDataSeedMigration extends AbstractMigration {
 
@@ -20,8 +19,7 @@ class CreateDataSeedMigration extends AbstractMigration {
                 return $faker->safeEmail();
             },
             'password' => function () {
-                $hasher = new DefaultPasswordHasher();
-                return $hasher->hash('123456');
+                return '123456';
             },
             'role' => 'user',
             'active' => function() {
