@@ -11,7 +11,7 @@ class CreateAdminSeedMigration extends AbstractMigration {
         $populator->addEntity('Users', 1, [
             'first_name' => 'Marcelo',
             'last_name' => 'Camargo',
-            'email' => 'marcelo.vaz@fm.usp.br',
+            'email' => 'celaummm@gmail.com',
             'password' => function () {
                 return '123456';
             },
