@@ -18,7 +18,7 @@ O código-fonte framework pode ser encontrada aqui: [cakephp/cakephp](https://gi
 
 3. Instalando o Bootstrap via Bower
 
-    Uma maneira rápida de obter os recursos do Bootstrap é usar o [bower].
+    Uma maneira rápida de obter os recursos do Bootstrap é usar o [bower](https://bower.io/).
 
     ```bash
     bower install
